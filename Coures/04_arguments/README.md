@@ -104,6 +104,66 @@ echo "ID de processus (PID) du script : \$$ = $$"
 
 ```
 
+### RQ : **accéder à un argument au-delà du neuvième argument**
+
+- **Solution 1 :**
+En Bash, pour accéder à un argument au-delà du neuvième argument, vous pouvez utiliser la notation `${10}`, `${11}`, `${12}`, et ainsi de suite. Cependant, il est important de noter que lorsque vous accédez à un argument au-delà du neuvième, vous devez utiliser les accolades pour éviter toute ambiguïté.
+
+Voici un exemple :
+
+```bash
+#!/bin/bash
+
+# Accéder aux dix premiers arguments
+echo "Argument 1 : $1"
+echo "Argument 2 : $2"
+echo "Argument 3 : $3"
+echo "Argument 4 : $4"
+echo "Argument 5 : $5"
+echo "Argument 6 : $6"
+echo "Argument 7 : $7"
+echo "Argument 8 : $8"
+echo "Argument 9 : $9"
+
+# Accéder aux arguments au-delà du neuvième
+echo "Argument 10 : ${10}"
+echo "Argument 11 : ${11}"
+# Et ainsi de suite...
+```
+
+Lorsque vous exécutez ce script avec des arguments, par exemple :
+
+```bash
+./mon_script.sh arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10 arg11
+```
+
+Il affichera les valeurs correspondantes des arguments dans le script.
+
+- **Solution 2:**
+
+l'instruction `shift`, vous pouvez décaler les arguments de la ligne de commande et accéder aux arguments suivants. Voici comment vous pouvez utiliser `shift` pour accéder aux arguments au-delà du neuvième :
+
+```bash
+#!/bin/bash
+
+# Décaler les arguments pour les ignorer jusqu'au neuvième inclusivement
+shift 9
+
+# Accéder aux arguments restants
+echo "Argument 10 : $1"
+echo "Argument 11 : $2"
+# Et ainsi de suite...
+```
+
+Lorsque vous exécutez ce script avec des arguments, par exemple :
+
+```bash
+./mon_script.sh arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10 arg11
+```
+
+Il affichera les valeurs correspondantes des arguments au-delà du neuvième en utilisant `shift`. Cette approche est particulièrement utile si vous ne voulez pas traiter manuellement tous les arguments au-delà du neuvième et que vous préférez décaler les arguments.
+
+
 
 ## 3. **les variables spéciales:**
 

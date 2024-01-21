@@ -291,6 +291,26 @@ Dans cet exemple, `${nom_utilisateur:-ValeurParDefaut}` vérifie si la variable 
 
    Ici, `$(date)` exécute la commande `date` et remplace cet appel par la sortie de la commande.
 
+6.**La substitution de l'expansion indirecte**
+
+La substitution de l'expansion indirecte, également appelée substitution de variable dynamique, est une fonctionnalité de Bash qui permet d'accéder à la valeur d'une variable dont le nom est déterminé dynamiquement à l'exécution du script.
+
+L'expansion indirecte se fait en utilisant la syntaxe `${!variable}`. Voici un exemple pour illustrer cela :
+
+```bash
+fruit="pomme"
+variable=fruit
+
+# Utilisation de l'expansion indirecte pour accéder à la valeur de la variable dont le nom est dans une autre variable
+echo ${!variable}  # Cela affichera "pomme"
+```
+
+Dans cet exemple, `variable` contient la chaîne de caractères "fruit". L'expansion indirecte `${!variable}` permet d'accéder à la valeur de la variable dont le nom est contenu dans `variable`, résultant en l'affichage de la valeur de la variable `fruit`.
+
+Cette fonctionnalité est utile dans divers scénarios, notamment lors de la création de scripts où le nom d'une variable doit être calculé ou déterminé dynamiquement pendant l'exécution du script.
+
+Il est important de noter que l'expansion indirecte n'est disponible que dans les versions plus récentes de Bash (généralement Bash 4 et supérieur). Assurez-vous que votre version de Bash prend en charge cette fonctionnalité si vous prévoyez de l'utiliser.
+
 La substitution de variable est une fonctionnalité puissante qui rend les scripts Bash flexibles et dynamiques en permettant l'utilisation de valeurs variables dans différentes parties du script.
 
 
