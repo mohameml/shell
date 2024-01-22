@@ -188,7 +188,7 @@ Dans un script, certaines variables spéciales comme `$0` (nom du script), `$1` 
 
 ### Remarque Importante :
 
-Lorsque vous référencez une variable, il est recommandé d'entourer son nom de guillemets doubles `"..."` pour éviter des problèmes liés aux espaces ou aux caractères spéciaux dans la valeur de la variable. Par exemple :
+- Lorsque vous référencez une variable, il est recommandé d'entourer son nom de guillemets doubles `"..."` pour éviter des problèmes liés aux espaces ou aux caractères spéciaux dans la valeur de la variable. Par exemple :
 
 ```bash
 nom="John Doe"
@@ -197,6 +197,31 @@ echo "Le nom est \"$nom\""
 
 Cela garantit que même si la valeur de `nom` contient des espaces, elle sera correctement interprétée.
 
+- **Explication détaille sur la différence entre `$var` et `"$var"` :**
+
+    En Bash, la différence entre `$var` et `"$var"` réside dans la manière dont la variable est étendue (interprétée). Voici une explication de chacun :
+
+    1. **$var (sans guillemets) :**
+        - **Sans guillemets**, la valeur de la variable est sujette à l'interprétation de certains caractères spéciaux (par exemple, les espaces).
+        - Si la variable `var` contient des espaces ou d'autres caractères spéciaux, ils peuvent causer des problèmes lors de l'expansion.
+        - Exemple :
+            ```bash
+            var="Mon texte avec des espaces"
+            echo $var
+            ```
+
+    2. **"$var" (avec guillemets doubles) :**
+        - **Avec des guillemets doubles**, la valeur de la variable est préservée telle quelle, y compris les espaces et les caractères spéciaux.
+        - Utiliser des guillemets doubles est souvent recommandé pour éviter des problèmes liés aux espaces dans les valeurs de variables.
+        - Exemple :
+            ```bash
+            var="Mon texte avec des espaces"
+            echo "$var"
+            ```
+
+    En général, la bonne pratique est d'utiliser `"$var"` (avec des guillemets doubles) pour référencer des variables, car cela préserve la valeur exacte de la variable, évite les problèmes liés aux espaces et offre une protection contre l'interprétation incorrecte de certains caractères spéciaux. Cependant, il peut y avoir des cas spécifiques où l'utilisation de `$var` (sans guillemets) est souhaitable, par exemple, lorsque vous souhaitez que l'interprétation de la variable inclue une séparation en mots selon les espaces.
+
+    En résumé, pour éviter des problèmes potentiels, il est généralement recommandé d'utiliser `"$var"` chaque fois que vous référencez une variable dans Bash, à moins que vous ayez une raison spécifique d'utiliser `$var` sans guillemets.
 
 
 ## 4. **Variable Non Définie :**

@@ -132,6 +132,30 @@ fi
 
 Ces opérateurs de comparaison permettent d'évaluer des conditions basées sur des relations entre des entiers en Bash. Vous pouvez les utiliser dans des structures de contrôle `if` pour prendre des décisions conditionnelles dans vos scripts.
 
+### RQ : 
+
+il existe une alternative pour tester les nombres en Bash avec `((..))` qui consiste à utiliser les opérateurs de comparaison numérique à l'intérieur de cette construction. Voici les opérateurs de comparaison que vous pouvez utiliser avec `((..))` :
+
+- `<` : inférieur à
+- `<=` : inférieur ou égal à
+- `>` : supérieur à
+- `>=` : supérieur ou égal à
+- `==` : égal à
+- `!=` : différent de
+
+Voici un exemple utilisant `((..))` dans un contexte de comparaison numérique :
+
+```bash
+a=0
+b=10
+
+if ((a < b)); then  
+    echo " a < b "
+done
+```
+
+Dans cet exemple, `((a < b))` est utilisé pour tester si `a` est inférieur à `b`. 
+
 
 ## 3. **les opérateurs logiques:**
 
